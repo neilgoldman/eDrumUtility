@@ -99,6 +99,7 @@ void eDrumUtil::SetUpHiHatTable()
 		else
 			mHiHatTable[i] = (*currStyle)->note;
 	}
+	mCorrectHiHatNote = mHiHatTable[MIDI_MIN_VALUE];
 }
 
 
@@ -240,11 +241,11 @@ void eDrumUtil::OnParamChange(int paramIdx)
 		case kNoteMinSampleLength:
 				mNoteMinSampleLength = GetParam(kNoteMinSampleLength)->Int();
 				return;
-		case kInvertPedalCC:
-				mIncomingPedalCC = GetParam(kIncomingPedalCC)->Int();
-				return;
 		//==
 		//Below here triggers SetUpHiHatTable
+		case kInvertPedalCC:
+				mInvertPedalCC = GetParam(kInvertPedalCC)->Bool();
+				break;
 		case kHatTightClosedNote:
 				mHatTightClosed.note = GetParam(kHatTightClosedNote)->Int();
 				break;
@@ -292,5 +293,4 @@ void eDrumUtil::OnParamChange(int paramIdx)
 	}
 
 	SetUpHiHatTable();
-	mCorrectHiHatNote = mHiHatTable[MIDI_MAX_VALUE];
 }

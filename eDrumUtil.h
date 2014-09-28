@@ -7,6 +7,7 @@
 
 
 #define NUM_MIDI_NOTES 128
+#define MIDI_MIN_VALUE 0
 #define MIDI_MAX_VALUE 127
 
 
